@@ -1,0 +1,6 @@
+.gitbook-link {
+    display: none!important;
+}
+.divider:nth-last-child(2) {
+    display: none!important;
+}
