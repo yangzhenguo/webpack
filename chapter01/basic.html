@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Part I · webpack</title>
+        <title>基本示例 · webpack</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -73,10 +73,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="options.html" />
     
-    
-    <link rel="prev" href="../" />
+    <link rel="prev" href="options.html" />
     
 
     </head>
@@ -118,7 +116,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="./">
+        <li class="chapter " data-level="1.2" data-path="./">
             
                 <a href="./">
             
@@ -145,7 +143,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="basic.html">
+        <li class="chapter active" data-level="1.2.2" data-path="basic.html">
             
                 <a href="basic.html">
             
@@ -193,7 +191,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Part I</a>
+        <a href=".." >基本示例</a>
     </h1>
 </div>
 
@@ -208,10 +206,39 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <ul>
-<li><a href="options.html">&#x914D;&#x7F6E;</a></li>
-<li><a href="basic.html">&#x57FA;&#x672C;&#x793A;&#x4F8B;</a></li>
-</ul>
+                                <p><code>index.html</code></p>
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-CN&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Webpack<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;dist/bundle.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>Webpack&#x914D;&#x7F6E;&#x6587;&#x4EF6;<code>webpack.config.js</code></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+    entry: <span class="hljs-string">&apos;./src/main.js&apos;</span>,
+    output: {
+        path: path.resolve(__dirname, <span class="hljs-string">&apos;dist&apos;</span>),
+        filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
+    }
+}
+</code></pre>
+<p>&#x81EA;&#x5B9A;&#x4E49;CommonJS&#x6A21;&#x5757;<code>print.js</code></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">text</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&apos;#app&apos;</span>).innerHTML = <span class="hljs-string">&apos;Hello, &apos;</span> + text;
+}
+</code></pre>
+<p>&#x5F15;&#x5165;CommonJS&#x6A21;&#x5757;<code>main.js</code></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> print = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./print&apos;</span>);
+print(<span class="hljs-string">&apos;Webpack&apos;</span>);
+</code></pre>
 
                                 
                                 </section>
@@ -239,14 +266,10 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 前言">
+                <a href="options.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 配置">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="options.html" class="navigation navigation-next " aria-label="Next page: 配置">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -255,7 +278,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part I","level":"1.2","depth":1,"next":{"title":"配置","level":"1.2.1","depth":2,"path":"chapter01/options.md","ref":"chapter01/options.md","articles":[]},"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","search-pro","sharing-plus","code","advanced-emoji","emphasize","splitter","hide-element"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":false,"weibo":true,"twitter":false,"pocket":false,"google":false,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"杨振国","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"webpack","language":"zh-hans","gitbook":"*","description":"webpack入门和进阶"},"file":{"path":"chapter01/README.md","mtime":"2019-05-31T15:22:40.751Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-05T10:28:03.857Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"基本示例","level":"1.2.2","depth":2,"previous":{"title":"配置","level":"1.2.1","depth":2,"path":"chapter01/options.md","ref":"chapter01/options.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","-lunr","-sharing","search-pro","sharing-plus","code","advanced-emoji","emphasize","splitter","hide-element"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":true,"facebook":false,"weibo":true,"twitter":false,"pocket":false,"google":false,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"杨振国","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"webpack","language":"zh-hans","gitbook":"*","description":"webpack入门和进阶"},"file":{"path":"chapter01/basic.md","mtime":"2019-05-31T15:27:26.704Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-05T10:28:03.857Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
